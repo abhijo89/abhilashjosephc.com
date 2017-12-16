@@ -1,13 +1,13 @@
 #!/bin/bash
 
 NAME="personal_website"                                  # Name of the application
-DJANGODIR=/home/pi/abhilashjosephc.com/website/            # Django project directory
-SOCKFILE=/srv/public/gunicorn.sock  # we will communicte using this unix socket
-USER=pi                                        # the user to run as
-GROUP=pi                                     # the group to run as
-NUM_WORKERS=1                                     # how many worker processes should Gunicorn spawn
-DJANGO_SETTINGS_MODULE=website.settings             # which settings file should Django use
-DJANGO_WSGI_MODULE=website.wsgi                     # WSGI module name
+DJANGODIR=/home/pi/abhilashjosephc.com/website/          # Django project directory
+SOCKFILE=/tmp/gunicorn.sock                       # we will communicte using this unix socket
+USER=pi                                                  # the user to run as
+GROUP=pi                                                 # the group to run as
+NUM_WORKERS=1                                            # how many worker processes should Gunicorn spawn
+DJANGO_SETTINGS_MODULE=website.settings                  # which settings file should Django use
+DJANGO_WSGI_MODULE=website.wsgi                          # WSGI module name
 
 echo "Starting $NAME as `whoami`"
 
