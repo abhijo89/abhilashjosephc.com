@@ -19,7 +19,6 @@ import raven
 
 filename = getframeinfo(currentframe()).filename
 root_dir = Path(filename).resolve().parents[2]
-print(root_dir)
 config_file = f'{root_dir}/application.cfg'
 
 config = RawConfigParser()
@@ -130,7 +129,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static')
-print(config.get('sentry', 'dsn'))
 RAVEN_CONFIG = {
     'dsn': config.get('sentry', 'dsn'),
     # If you are using git, you can also automatically configure the
