@@ -2,7 +2,7 @@
 
 NAME="personal_website"                                  # Name of the application
 DJANGODIR=/home/pi/abhilashjosephc.com/website/          # Django project directory
-SOCKFILE=/tmp/gunicorn.sock                       # we will communicte using this unix socket
+SOCKFILE=/home/pi/gunicorn.sock                       # we will communicte using this unix socket
 USER=pi                                                  # the user to run as
 GROUP=pi                                                 # the group to run as
 NUM_WORKERS=1                                            # how many worker processes should Gunicorn spawn
