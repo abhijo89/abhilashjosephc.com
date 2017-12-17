@@ -69,7 +69,7 @@
                         <nav class="primary-nav">
                             <div class="clearfix nav-wrapper">
                                 <a href="#home" class="left brand-logo menu-smooth-scroll" data-section="#home"><img
-                                        src="images/logo.png" alt="">
+                                        src='{% static "images/logo.png" %}' alt="Abhilash Joseph C.">
                                 </a>
                                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i
                                         class="mdi-navigation-menu"></i></a>
@@ -97,10 +97,10 @@
                                     <li class="mobile-profile">
                                         <div class="profile-inner">
                                             <div class="pp-container">
-                                                <img src="images/person.jpg" alt="">
+                                                <img src='{% static "/images/person.jpg" %}' alt="">
                                             </div>
-                                            <h3>John Doe</h3>
-                                            <h5>Creative UI/UX Expert</h5>
+                                            <h3>Abhilash Joseph C.</h3>
+                                            <h5>Python Expert</h5>
                                         </div>
                                     </li><!-- mini profile end-->
 
@@ -114,25 +114,13 @@
                                     <li><a href="#portfolio" data-section="#portfolio" class="menu-smooth-scroll"><i
                                             class="fa fa-briefcase fa-fw"></i>Portfolio</a>
                                     </li>
-                                    <li><a href="#team" data-section="#team" class="menu-smooth-scroll"><i
-                                            class="fa fa-users fa-fw"></i>Team</a>
-                                    </li>
-
                                     <li><a href="http://blog.abhilashjosephc.com"><i class="fa fa-pencil fa-fw"></i>Blog</a>
                                     </li>
                                     <li><a href="#contact" data-section="#contact" class="menu-smooth-scroll"><i
                                             class="fa fa-paper-plane fa-fw"></i>Contact</a>
                                     </li>
                                 </ul>
-                                <ul id="dropdown1" class="inline-menu submenu-ul dropdown-content">
-                                    <li>Home</li>
-                                    <li><a href="blog.html">All Blog</a>
-                                    </li>
-                                    <li><a href="blog-with-sidebar.html">Blog with Sidebar</a>
-                                    </li>
-                                    <li><a href="single.html">Single Blog</a>
-                                    </li>
-                                </ul>
+
 
                             </div>
                         </nav>
@@ -142,6 +130,7 @@
         </div>
         <!-- .container end -->
     </header>
+
 </main>
 
 
