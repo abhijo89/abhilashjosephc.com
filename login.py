@@ -9,7 +9,7 @@ vs = soup.find(attrs={"id": "__VIEWSTATE"}).get('value')
 vsg = soup.find(attrs={"id": "__VIEWSTATEGENERATOR"}).get('value')
 data = {
     "ctl00$ContentPlaceHolder1$txtUsername": "CKNR76063",
-    "ctl00$ContentPlaceHolder1$txtPassword": "PQH5F",
+    "ctl00$ContentPlaceHolder1$txtPassword": "PQH5FF",
     "ctl00$ContentPlaceHolder1$lnklogin": "LOG IN",
     "__VIEWSTATE": vs,
     "__VIEWSTATEGENERATOR": vsg,
