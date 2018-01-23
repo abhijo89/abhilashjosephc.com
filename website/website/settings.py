@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'raven.contrib.django.raven_compat',
     'blog',
     'accounts',
@@ -68,6 +70,29 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'website.urls'
 AUTH_USER_MODEL = 'accounts.BlogUser'
 LOGIN_URL = '/login/'
+SITE_NAME = 'Blog'
+SITE_URL = 'https://blog.abhilashjosephc.com'
+SITE_DESCRIPTION = 'Abhilash Joseph Blog'
+SITE_SEO_DESCRIPTION = 'Abhilash Joseph Blog'
+SITE_SEO_KEYWORDS = 'linux,apache,mysql,ubuntu,shell,web,csharp,.net,asp,mac,swift,python,django'
+ARTICLE_SUB_LENGTH = 300
+SHOW_GOOGLE_ADSENSE = False
+
+CACHE_CONTROL_MAX_AGE = 2592000
+# cache setting
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+        'KEY_PREFIX': 'djangoblog',
+        'TIMEOUT': 60 * 60 * 10
+    },
+    'locmemcache': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'TIMEOUT': 10800,
+        'LOCATION': 'unique-snowflake',
+    }
+}
 
 TEMPLATES = [
     {
@@ -86,6 +111,30 @@ TEMPLATES = [
         },
     },
 ]
+
+OAHUTH = {
+    'sina': {
+        'appkey': os.environ.get('SINA_APP_KEY'),
+        'appsecret': os.environ.get('SINA_APP_SECRET'),
+        'callbackurl': 'https://blog.abhilashjosephc.com/oauth/authorize?type=weibo'
+    },
+    'google': {
+        'appkey': os.environ.get('GOOGLE_APP_KEY'),
+        'appsecret': os.environ.get('GOOGLE_APP_SECRET'),
+        'callbackurl': 'https://blog.abhilashjosephc.com/oauth/authorize?type=google'
+    },
+    'github': {
+        'appkey': os.environ.get('GITHUB_APP_KEY'),
+        'appsecret': os.environ.get('GITHUB_APP_SECRET'),
+        'callbackurl': 'https://blog.abhilashjosephc.com/oauth/authorize?type=github'
+    },
+    'facebook': {
+        'appkey': os.environ.get('FACEBOOK_APP_KEY'),
+        'appsecret': os.environ.get('FACEBOOK_APP_SECRET'),
+        'callbackurl': 'https://blog.abhilashjosephc.com/oauth/authorize?type=facebook'
+    }
+}
+SITE_ID = 1
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
