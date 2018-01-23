@@ -1,9 +1,15 @@
+import logging
+
 from django.conf import settings
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.utils import cache
 from django.utils.functional import cached_property
+
+from website.utils import cache_decorator
+
+logger = logging.getLogger(__name__)
 
 
 class BaseModel(models.Model):

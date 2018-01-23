@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from website.blog.models import Article
+from blog.models import Article
 
 
 class Comment(models.Model):

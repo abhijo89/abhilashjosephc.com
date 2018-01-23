@@ -1,6 +1,46 @@
-from website.blog.models import Article
-from website.comments.models import Comment
+import logging
+from hashlib import md5
+
+from django.core.cache import cache
+
+logger = logging.getLogger(__name__)
 
 
 def get_max_articleid_commentid():
-    return (Article.objects.latest().pk, Comment.objects.latest().pk)
+    from blog.models import Article
+    from comments.models import Comment
+    return Article.objects.latest().pk, Comment.objects.latest().pk
+
+
+def get_md5(str):
+    m = md5(str.encode('utf-8'))
+    return m.hexdigest()
+
+
+def cache_decorator(expiration=3 * 60):
+    def wrapper(func):
+        def news(*args, **kwargs):
+            try:
+                view = args[0]
+                key = view.get_cache_key()
+            except:
+                key = None
+                pass
+            if not key:
+                unique_str = repr((func, args, kwargs))
+
+                m = md5(unique_str.encode('utf-8'))
+                key = m.hexdigest()
+            value = cache.get(key)
+            if value:
+                logger.info('cache_decorator get cache:%s key:%s' % (func.__name__, key))
+                return value
+            else:
+                logger.info('cache_decorator set cache:%s key:%s' % (func.__name__, key))
+                value = func(*args, **kwargs)
+                cache.set(key, value, expiration)
+                return value
+
+        return news
+
+    return wrapper

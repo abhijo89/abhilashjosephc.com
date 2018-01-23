@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'raven.contrib.django.raven_compat',
+    'blog',
+    'accounts',
+    'oauth',
+    'comments',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +66,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'website.urls'
+AUTH_USER_MODEL = 'accounts.BlogUser'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
