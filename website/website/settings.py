@@ -77,7 +77,7 @@ SITE_SEO_DESCRIPTION = 'Abhilash Joseph Blog'
 SITE_SEO_KEYWORDS = 'linux,apache,mysql,ubuntu,shell,web,csharp,.net,asp,mac,swift,python,django'
 ARTICLE_SUB_LENGTH = 300
 SHOW_GOOGLE_ADSENSE = False
-
+PAGINATE_BY = 10
 CACHE_CONTROL_MAX_AGE = 2592000
 # cache setting
 CACHES = {
