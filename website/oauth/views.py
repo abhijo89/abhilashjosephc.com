@@ -1,4 +1,3 @@
-from DjangoBlog.utils import send_email, get_md5
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
@@ -10,8 +9,9 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import FormView
-from oauth.forms import RequireEmailForm
 
+from oauth.forms import RequireEmailForm
+from website.utils import get_md5
 from .manager import get_manager_by_type
 from .models import OAuthUser
 
@@ -125,7 +125,7 @@ def emailconfirm(request, id, sign):
                 {url}
     '''.format(type=oauthuser.type, url='http://' + site)
 
-    send_email(emailto=[oauthuser.email, ], title='Congratulations', content=content)
+    # send_email(emailto=[oauthuser.email, ], title='Congratulations', content=content)
     url = reverse('oauth:bindsuccess', kwargs={
         'oauthid': id
     })
@@ -186,7 +186,7 @@ class RequireEmailView(FormView):
                 If the above link does not open, please copy this link to your browser.
                 {url}
                 """.format(url=url)
-        send_email(emailto=[email, ], title='Congratulations', content=content)
+        # send_email(emailto=[email, ], title='Congratulations', content=content)
         url = reverse('oauth:bindsuccess', kwargs={
             'oauthid': oauthid
         })

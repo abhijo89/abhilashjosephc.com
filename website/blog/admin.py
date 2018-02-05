@@ -77,14 +77,17 @@ class ArticlelAdmin(admin.ModelAdmin):
         from website.utils import cache
         cache.clear()
 
-    def get_view_on_site_url(self, obj=None):
-        if obj:
-            url = obj.get_full_url()
-            return url
-        else:
-            from django.contrib.sites.models import Site
-            site = Site.objects.get_current().domain
-            return site
+    class Media:
+        js = ("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js",)
+
+        # def get_view_on_site_url(self, obj=None):
+        #     if obj:
+        #         url = obj.get_full_url()
+        #         return url
+        #     else:
+        #         from django.contrib.sites.models import Site
+        #         site = Site.objects.get_current().domain
+        #         return site
 
 
 @admin.register(Tag)

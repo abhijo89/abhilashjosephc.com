@@ -55,6 +55,8 @@ INSTALLED_APPS = [
     'accounts',
     'oauth',
     'comments',
+    'compressor',
+    'pagedown',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +81,7 @@ ARTICLE_SUB_LENGTH = 300
 SHOW_GOOGLE_ADSENSE = False
 PAGINATE_BY = 10
 CACHE_CONTROL_MAX_AGE = 2592000
+
 # cache setting
 CACHES = {
     'default': {
@@ -181,11 +184,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
-
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '../'))
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_URL = '/static/'
+SIDEBAR_ARTICLE_COUNT = 10
+SIDEBAR_COMMENT_COUNT = 5
 # STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static')
 RAVEN_CONFIG = {
     'dsn': config.get('sentry', 'dsn'),
@@ -193,3 +200,23 @@ RAVEN_CONFIG = {
     # release based on the git info.
     'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
 }
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_ENABLED = True
+# COMPRESS_OFFLINE = True
+
+
+COMPRESS_CSS_FILTERS = [
+    # creates absolute urls from relative ones
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    # css minimizer
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]

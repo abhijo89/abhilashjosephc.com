@@ -1,2 +1,3 @@
 django-pagedown>=1.0.4
 python-memcached
+django_compressor

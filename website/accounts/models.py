@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.contrib.sites.models import Site
 from django.db import models
 from django.urls import reverse
 
@@ -17,7 +18,7 @@ class BlogUser(AbstractUser):
     def __str__(self):
         return self.email
 
-        # def get_full_url(self):
-        #     site = Site.objects.get_current().domain
-        #     url = "https://{site}{path}".format(site=site, path=self.get_absolute_url())
-        #     return url
+    def get_full_url(self):
+        site = Site.objects.get_current().domain
+        url = "https://{site}{path}".format(site=site, path=self.get_absolute_url())
+        return url

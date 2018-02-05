@@ -6,7 +6,7 @@ from abc import ABCMeta, abstractmethod
 import requests
 from django.conf import settings
 
-from website.oauth.models import OAuthUser
+from oauth.models import OAuthUser
 
 logger = logging.getLogger(__name__)
 

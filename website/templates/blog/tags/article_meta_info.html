@@ -1,0 +1,43 @@
+{% load blog_tags %}
+<footer class="entry-meta">
+    Published on <a href="{{ article.get_absolute_url }}"
+                    title="{% datetimeformat article.created_time %}"
+                    itemprop="datePublished" content="{% datetimeformat article.created_time %}"
+                    rel="bookmark">
+
+    <time class="entry-date updated"
+          datetime="{{ article.created_time }}">
+        {% datetimeformat article.created_time %}</time>
+</a>
+    {% if article.type == 'a' %}.
+        Category <a href="{{ article.category.get_absolute_url }}" rel="category tag">{{ article.category.name }}</a>，
+        {% if article.tags.all %}
+            Tags
+
+            {% for t in article.tags.all %}
+                <a href="{{ t.get_absolute_url }}" rel="tag">{{ t.name }}</a>
+                {% if t != article.tags.all.last %}
+                    ，
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    <span class="by-author">Author
+        <span class="author vcard">
+            <a class="url fn n" href="{{ article.author.get_absolute_url }}"
+               title="See all by {{ article.author.username }} Published articles"
+               rel="author">
+            <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+            <span itemprop="name" itemprop="publisher">
+
+            {{ article.author.username }}
+        </span>
+            </span>
+    </a>
+        </span>。
+        {% if user.is_authenticated %}
+            <a href="{{ article.get_admin_url }}">Admin</a>
+        {% endif %}
+    </span>
+</footer><!-- .entry-meta -->
