@@ -19,10 +19,10 @@ import raven
 
 filename = getframeinfo(currentframe()).filename
 root_dir = Path(filename).resolve().parents[2]
-config_file = f'{root_dir}/application.cfg'
+# config_file = f'{root_dir}/application.cfg'
 
-config = RawConfigParser()
-config.read_file(open(config_file))
+# config = RawConfigParser()
+# config.read_file(open(config_file))
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -194,12 +194,12 @@ STATIC_URL = '/static/'
 SIDEBAR_ARTICLE_COUNT = 10
 SIDEBAR_COMMENT_COUNT = 5
 # STATIC_ROOT = os.path.join(os.path.dirname(__file__), '..', 'static')
-RAVEN_CONFIG = {
-    'dsn': config.get('sentry', 'dsn'),
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
-}
+# RAVEN_CONFIG = {
+#     'dsn': config.get('sentry', 'dsn'),
+#     # If you are using git, you can also automatically configure the
+#     # release based on the git info.
+#     'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+# }
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
